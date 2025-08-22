@@ -8,7 +8,7 @@ import (
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
 
-	"github.com/MUstinov77/messanger/utils"
+	"github.com/MUstinov77/weatherGo/utils"
 )
 
 func SetupUi(weatherResponse *utils.WeatherResponse) {

@@ -3,14 +3,20 @@ package main
 import (
 	"fmt"
 
-	"github.com/MUstinov77/messanger/ui"
-	"github.com/MUstinov77/messanger/utils"
+	"github.com/MUstinov77/weatherGo/env"
+	"github.com/MUstinov77/weatherGo/ui"
+	"github.com/MUstinov77/weatherGo/utils"
 )
 
 func main() {
 	// URL, к которому делаем запрос
 	url := "https://api.openweathermap.org/data/2.5/weather"
-	const apiKey = "589f351e2d6f2a3584e83f7879b34977"
+	envMap, err := env.ParseEnvFile(".env")
+	if err != nil {
+		fmt.Println("Tvoi algos ne pashet")
+	}
+	apiKey := envMap["API_KEY"]
+	fmt.Println(envMap, apiKey)
 
 	// Создаем новый GET-запрос
 	weatherResponse, err := utils.MakeResponse(url, apiKey)

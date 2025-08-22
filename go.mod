@@ -1,4 +1,4 @@
-module github.com/MUstinov77/messanger
+module github.com/MUstinov77/weatherGo
 
 go 1.24.3
 
