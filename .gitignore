@@ -1,0 +1,189 @@
+# ================================
+# Go специфичные файлы
+# ================================
+
+# Исполняемые файлы
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Тестовые бинарники
+*.test
+*.test.exe
+
+# Бинарники при компиляции
+*.out
+/bin/
+/dist/
+/out/
+/target/
+
+# Кэш Go
+/.go/
+/go-build/
+/go-cache/
+
+# Зависимости (выбирайте что нужно)
+/go.sum
+/go.env
+/vendor/           # если не коммитите vendor
+/go/pkg/          # пакеты
+/go/src/          # исходники (для GOPATH)
+
+# ================================
+# Файлы зависимостей и модулей
+# ================================
+
+# Если используете go mod, но не коммитите зависимости
+/vendor/
+
+# Файлы блокировки зависимостей (обычно не коммитятся)
+go.sum
+
+# ================================
+# Тесты и покрытие кода
+# ================================
+
+# Файлы покрытия тестами
+coverage.txt
+coverage.html
+*.coverprofile
+*.cover
+
+# Профилирование и бенчмарки
+*.prof
+*.trace
+cpu.prof
+mem.prof
+block.prof
+
+# ================================
+# IDE и редакторы кода
+# ================================
+
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# GoLand
+.idea/
+*.iml
+
+# Vim
+*.swp
+*.swo
+*~
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ================================
+# Операционные системы
+# ================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+
+# ================================
+# Логи и временные файлы
+# ================================
+
+*.log
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# ================================
+# Конфигурационные файлы с секретами
+# ================================
+
+# Файлы окружения
+.env
+.env.*
+!.env.example
+.local.env
+.secrets
+
+# Конфиги приложения
+config.yaml
+config.yml
+config.json
+config.toml
+*.config
+
+# Сертификаты и ключи
+*.key
+*.pem
+*.crt
+*.cert
+
+# ================================
+# Документация и сборка
+# ================================
+
+# Документация Godoc
+/doc/
+
+# Сгенерированная документация
+/godoc/
+
+# Docker
+Dockerfile.dev
+docker-compose.override.yml
+
+# ================================
+# Прочее
+# ================================
+
+# Резервные копии
+*.bak
+*.backup
+
+# Миграции баз данных (если генерируются)
+/migrations/*.down.sql
+
+# Кэш линтеров
+.gometalinter.cache
