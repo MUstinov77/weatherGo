@@ -18,7 +18,7 @@ func SetupUi(weatherResponse *utils.WeatherResponse) {
 
 	var vBox = container.NewVBox(
 		widget.NewLabel(fmt.Sprintf("Timezone %v", weatherResponse.Name)),
-		widget.NewLabel(fmt.Sprintf("Temperature: %v", weatherResponse.Main.Temp)),
+		widget.NewLabel(fmt.Sprintf("Temperature: %.1f", weatherResponse.Main.Temp)),
 		widget.NewLabel(fmt.Sprintf("Feels like: %v", weatherResponse.Main.FeelsLike)),
 		widget.NewLabel(fmt.Sprintf("Humidity: %v", weatherResponse.Main.Humidity)),
 	)
@@ -38,9 +38,10 @@ func manageSettings(app fyne.App) {
 	w := app.NewWindow("Settings")
 
 	var vBox = container.NewVBox(
-		widget.NewSelect([]string{"hdvndvdj", "nvvdkv"}, func(s string) {
+		widget.NewSelect([]string{"hdvndvdj", "nvvdkv"}, func(url string) {
 			app.Quit()
 		}),
 	)
 	w.SetContent(vBox)
+	w.Show()
 }

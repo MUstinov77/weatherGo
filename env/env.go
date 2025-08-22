@@ -3,6 +3,7 @@ package env
 import (
 	"bufio"
 	"fmt"
+	"github.com/mitchellh/mapstructure"
 	"os"
 	"strings"
 )
@@ -41,4 +42,16 @@ func ParseEnvFile(filename string) (map[string]string, error) {
 		return nil, fmt.Errorf("error reading file - %v", err)
 	}
 	return envMap, nil
+}
+
+type Config struct {
+	Url    string `mapstructure:"API_URL"`
+	ApiKey string `mapstructure:"API_KEY"`
+}
+
+func (c *Config) LoadConfig(envMap map[string]string) error {
+	if err := mapstructure.Decode(envMap, c); err != nil {
+		return fmt.Errorf("error during decode env map - %v", err)
+	}
+	return nil
 }

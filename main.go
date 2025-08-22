@@ -10,16 +10,15 @@ import (
 
 func main() {
 	// URL, к которому делаем запрос
-	url := "https://api.openweathermap.org/data/2.5/weather"
 	envMap, err := env.ParseEnvFile(".env")
 	if err != nil {
 		fmt.Println("Tvoi algos ne pashet")
 	}
-	apiKey := envMap["API_KEY"]
-	fmt.Println(envMap, apiKey)
+	config := env.Config{}
+	config.LoadConfig(envMap)
 
 	// Создаем новый GET-запрос
-	weatherResponse, err := utils.MakeResponse(url, apiKey)
+	weatherResponse, err := utils.MakeResponse(config.Url, config.ApiKey)
 	if err != nil {
 		fmt.Println("Error during fetch api")
 		fmt.Println(err)

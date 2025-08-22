@@ -50,4 +50,5 @@ func (w *WeatherFact) FahrenheitToCelsius() {
 
 func (w *WeatherFact) KelvinToCelsius() {
 	w.Temp = w.Temp - 273.15
+
 }
