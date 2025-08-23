@@ -9,15 +9,16 @@ import (
 )
 
 func main() {
-	// URL, к которому делаем запрос
+	// Parsing env file and build map[nameOfKey]=[keyVariable]
 	envMap, err := env.ParseEnvFile(".env")
 	if err != nil {
 		fmt.Println("Tvoi algos ne pashet")
 	}
+	// Build config and load-in the env-variables
 	config := env.Config{}
 	config.LoadConfig(envMap)
 
-	// Создаем новый GET-запрос
+	// Build request to the default weather api and parse the response
 	weatherResponse, err := utils.MakeResponse(config.Url, config.ApiKey)
 	if err != nil {
 		fmt.Println("Error during fetch api")
@@ -25,6 +26,6 @@ func main() {
 		return
 	}
 
-	// Читаем тело ответа
-	ui.SetupUi(weatherResponse)
+	// Set up ui
+	ui.SetupUi(weatherResponse, &config)
 }

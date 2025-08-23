@@ -8,10 +8,11 @@ import (
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
 
+	"github.com/MUstinov77/weatherGo/env"
 	"github.com/MUstinov77/weatherGo/utils"
 )
 
-func SetupUi(weatherResponse *utils.WeatherResponse) {
+func SetupUi(weatherResponse *utils.WeatherResponse, c *env.Config) {
 	app := app.New()
 
 	w := app.NewWindow("Forecast")
@@ -26,7 +27,7 @@ func SetupUi(weatherResponse *utils.WeatherResponse) {
 		app.Quit()
 	}))
 	vBox.Add(widget.NewButton("Settings", func() {
-		manageSettings(app)
+		manageSettings(app, c)
 	}))
 
 	w.SetContent(vBox)
@@ -34,12 +35,15 @@ func SetupUi(weatherResponse *utils.WeatherResponse) {
 	w.ShowAndRun()
 }
 
-func manageSettings(app fyne.App) {
+func manageSettings(app fyne.App, c *env.Config) {
 	w := app.NewWindow("Settings")
 
 	var vBox = container.NewVBox(
-		widget.NewSelect([]string{"hdvndvdj", "nvvdkv"}, func(url string) {
-			app.Quit()
+		widget.NewSelect([]string{c.Url, "nvvdkv"}, func(url string) {
+			c.Url = url
+		}),
+		widget.NewButton("Close", func() {
+			w.Close()
 		}),
 	)
 	w.SetContent(vBox)
