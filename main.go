@@ -17,8 +17,8 @@ func main() {
 	// Build config and load-in the env-variables
 	config := env.Config{}
 	config.LoadConfig(envMap)
-
-	// Build request to the default weather api and parse the response
+	// TODO: run prog in cycle to fetch the data from api and update ui
+	// Build request to open.weather.api and parse the response
 	weatherResponse, err := utils.MakeResponse(config.Url, config.ApiKey)
 	if err != nil {
 		fmt.Println("Error during fetch api")

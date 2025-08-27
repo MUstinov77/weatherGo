@@ -17,11 +17,23 @@ func SetupUi(weatherResponse *utils.WeatherResponse, c *env.Config) {
 
 	w := app.NewWindow("Forecast")
 
+	var (
+		timezoneLabel  = widget.NewLabel("")
+		tempLabel      = widget.NewLabel("")
+		feelsLikeLabel = widget.NewLabel("")
+		humidityLabel  = widget.NewLabel("")
+	)
+
+	timezoneLabel.Text = fmt.Sprintf("Timezone %v", weatherResponse.Name)
+	tempLabel.Text = fmt.Sprintf("Temperature: %.1f", weatherResponse.Main.Temp)
+	feelsLikeLabel.Text = fmt.Sprintf("Feels like: %v", weatherResponse.Main.FeelsLike)
+	humidityLabel.Text = fmt.Sprintf("Humidity: %v", weatherResponse.Main.Humidity)
+
 	var vBox = container.NewVBox(
-		widget.NewLabel(fmt.Sprintf("Timezone %v", weatherResponse.Name)),
-		widget.NewLabel(fmt.Sprintf("Temperature: %.1f", weatherResponse.Main.Temp)),
-		widget.NewLabel(fmt.Sprintf("Feels like: %v", weatherResponse.Main.FeelsLike)),
-		widget.NewLabel(fmt.Sprintf("Humidity: %v", weatherResponse.Main.Humidity)),
+		timezoneLabel,
+		tempLabel,
+		feelsLikeLabel,
+		humidityLabel,
 	)
 	vBox.Add(widget.NewButton("Close", func() {
 		app.Quit()
@@ -29,7 +41,10 @@ func SetupUi(weatherResponse *utils.WeatherResponse, c *env.Config) {
 	vBox.Add(widget.NewButton("Settings", func() {
 		manageSettings(app, c)
 	}))
-
+	vBox.Add(widget.NewButton("change", func() {
+		newButton := widget.NewLabel(fmt.Sprintf("new data - %v", "mdmcdc"))
+		vBox.Add(newButton)
+	}))
 	w.SetContent(vBox)
 
 	w.ShowAndRun()
@@ -39,6 +54,7 @@ func manageSettings(app fyne.App, c *env.Config) {
 	w := app.NewWindow("Settings")
 
 	var vBox = container.NewVBox(
+		// TODO: add api urls from config
 		widget.NewSelect([]string{c.Url, "nvvdkv"}, func(url string) {
 			c.Url = url
 		}),
