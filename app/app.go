@@ -9,7 +9,6 @@ import (
 	"github.com/MUstinov77/weatherGo/config"
 )
 
-// TODO: add UI-type in app
 type WeatherApp struct {
 	Config *config.Config
 	UI     *ui.UI
@@ -42,9 +41,6 @@ func (wa *WeatherApp) startAutoUpdate() {
 }
 
 func NewWeatherApp() *WeatherApp {
-	// ui := ui.NewUi()
-	// config := config.NewConfig()
-
 	return &WeatherApp{
 		Config: config.NewConfig(),
 		UI:     ui.NewUi(),

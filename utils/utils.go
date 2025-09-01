@@ -39,9 +39,9 @@ type WeatherResponse struct {
 }
 
 type WeatherFact struct {
-	Temp      float64 `json:temp`
-	FeelsLike float64 `json:feels_like`
-	Humidity  int     `json:condition`
+	Temp       float64 `json:temp`
+	Feels_Like float64 `json:feels_like`
+	Humidity   int     `json:condition`
 }
 
 func (w *WeatherFact) FahrenheitToCelsius() {
@@ -50,5 +50,6 @@ func (w *WeatherFact) FahrenheitToCelsius() {
 
 func (w *WeatherFact) KelvinToCelsius() {
 	w.Temp = w.Temp - 273.15
+	w.Feels_Like = w.Feels_Like - 273.15
 
 }
