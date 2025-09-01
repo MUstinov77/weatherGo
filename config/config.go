@@ -1,4 +1,4 @@
-package env
+package config
 
 import (
 	"bufio"
@@ -54,4 +54,8 @@ func (c *Config) LoadConfig(envMap map[string]string) error {
 		return fmt.Errorf("error during decode env map - %v", err)
 	}
 	return nil
+}
+
+func NewConfig() *Config {
+	return &Config{}
 }
