@@ -130,5 +130,5 @@ func (ui *UI) UpdateUI(config *config.Config) {
 	ui.tempLabel.SetText(fmt.Sprintf("Temperature: %.1f", resp.Main.Temp))
 	ui.feelsLikeLabel.SetText(fmt.Sprintf("Feels like: %v", resp.Main.FeelsLike))
 	ui.humidityLabel.SetText(fmt.Sprintf("Humidity: %v", resp.Main.Humidity))
-	ui.lastUpdated.SetText(fmt.Sprintf("Last updated: %v", time.Now().Format()))
+	ui.lastUpdated.SetText(fmt.Sprintf("Last updated: %v", time.Now().Format(time.TimeOnly)))
 }
